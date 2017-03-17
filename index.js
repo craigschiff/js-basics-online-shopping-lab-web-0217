@@ -28,19 +28,26 @@ function addToCart(item){
   return getCart()
 }
 function viewCart(){
-  if (cart.length === 0){
+  if (!cart[0]){
     console.log("Your shopping cart is empty.")
+
   }else{
-    console.log("In your cart, you have ")
-    for (let i = 0; i < cart.length; i +=1){
-      for (let item in cart[i]){
-      console.log(`${item} at $${cart[i][item]}`)
-    }
+    const printCart = cart.map((item) => {
+      let key = Object.keys[item][0]
+      let price = Object.keys[item][0]
+      return `${key} at ${price}`
+    })
+    console.log(`In your cart you have ${printCart.join(", ")}.`)
+
+    // console.log("In your cart, you have ")
+    // for (let i = 0; i < cart.length; i +=1){
+    //   for (let item in cart[i]){
+    //   console.log(`${item} at $${cart[i][item]}`)
+    // }
     }
   }
 
 
-}
 
 
 function removeFromCart(item){
@@ -51,13 +58,6 @@ function removeFromCart(item){
       for (let i = 0; i <cart.length; i+=1){
         if (Object.keys(cart[i])[0] === `${item}`){
           delete cart[i]
-          const printCart = cart.map((item) => {
-            let key = Object.keys[item][0]
-            let price = Object.keys[item][0]
-            return `${key} at ${price}`
-
-          })
-          console.log(`In your cart you have ${printCart.join(", ")}.`)
         }
   // else {
   //   console.log("That item is not in your cart.")
